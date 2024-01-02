@@ -14,5 +14,5 @@ public class RegisterRequestDto {
     String password;
     String firstname;
     String lastname;
-    String country; 
+    String country;
 }

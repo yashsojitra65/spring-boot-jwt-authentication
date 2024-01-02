@@ -10,10 +10,9 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class DemoController {
-    
-    @PostMapping(value = "demo")
-    public String welcome()
-    {
+
+    @PostMapping("demo")
+    public String welcome() {
         return "Welcome from secure endpoint";
     }
 }

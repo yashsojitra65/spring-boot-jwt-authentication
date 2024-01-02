@@ -30,28 +30,28 @@ public class AuthService {
     public AuthResponseDto login(LoginRequestDto request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
-        String token=jwtService.getToken(user);
+        String token = jwtService.getToken(user);
         return AuthResponseDto.builder()
-            .token(token)
-            .build();
+                .token(token)
+                .build();
 
     }
 
     public AuthResponseDto register(RegisterRequestDto request) {
         User user = User.builder()
-            .username(request.getUsername())
-            .password(passwordEncoder.encode( request.getPassword()))
-            .firstname(request.getFirstname())
-            .lastname(request.getLastname())
-            .country(request.getCountry())
-            .role(Role.USER)
-            .build();
+                .username(request.getUsername())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
+                .country(request.getCountry())
+                .role(Role.USER)
+                .build();
 
         userRepository.save(user);
 
         return AuthResponseDto.builder()
-            .token(jwtService.getToken(user))
-            .build();
-        
+                .token(jwtService.getToken(user))
+                .build();
+
     }
 }

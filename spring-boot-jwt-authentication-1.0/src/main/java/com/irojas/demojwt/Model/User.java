@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
@@ -44,20 +44,24 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-      return List.of(new SimpleGrantedAuthority((role.name())));
+        return List.of(new SimpleGrantedAuthority((role.name())));
     }
+
     @Override
     public boolean isAccountNonExpired() {
-       return true;
+        return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
-       return true;
+        return true;
     }
+
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
     @Override
     public boolean isEnabled() {
         return true;
